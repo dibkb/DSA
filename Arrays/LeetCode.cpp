@@ -52,6 +52,28 @@ int findTarget(int nums[], int size, int target)
       return binarySearch(nums, 0, index - 1, target);
    }
 };
+bool sumOfSquaresExist(int target)
+{
+   int start = 0, end = sqrt(target), square;
+   while (start < end)
+   {
+      square = start * start + end * end;
+
+      if (square == target)
+      {
+         return true;
+      }
+      else if (square < target)
+      {
+         start++;
+      }
+      else
+      {
+         end--;
+      }
+   }
+   return false;
+};
 int main()
 {
    // ------------------------- Left and Right Occurance ------------------------------------
@@ -62,6 +84,13 @@ int main()
    int brr[7] = {1, 3, 5, 6, 77, 55};
    // cout << " find Pivot of" << findPivot(arr, 7);
    // cout << " bineary search 69:  " << binarySearch(brr, 0, 5, 69);
-   cout << "search 1:  " << findTarget(arr, 7, 1);
+   // cout << "search 1:  " << findTarget(arr, 7, 1);
+
+   // ====================== Sum of Squares ============================
+
+   // -------------------------633. Sum of Square Numbers------------------------
+
+   cout << sumOfSquaresExist(3);
+   // cout << "Hello";
    return 0;
 }
