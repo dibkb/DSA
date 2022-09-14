@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 using namespace std;
 int findPivot(int nums[], int size)
 {
@@ -58,7 +59,6 @@ bool sumOfSquaresExist(int target)
    while (start < end)
    {
       square = start * start + end * end;
-
       if (square == target)
       {
          return true;
@@ -70,6 +70,32 @@ bool sumOfSquaresExist(int target)
       else
       {
          end--;
+      }
+   }
+   return false;
+};
+bool validPerfectSquare(int num)
+{
+   if (num == 1)
+   {
+      return true;
+   }
+   long int start = 0, end = num / 2, square, mid;
+   while (start <= end)
+   {
+      mid = start + (end - start) / 2;
+      square = mid * mid;
+      if (square == num)
+      {
+         return true;
+      }
+      else if (square < num)
+      {
+         start = mid + 1;
+      }
+      else
+      {
+         end = mid - 1;
       }
    }
    return false;
@@ -89,8 +115,12 @@ int main()
    // ====================== Sum of Squares ============================
 
    // -------------------------633. Sum of Square Numbers------------------------
+   // cout << sumOfSquaresExist(3);
 
-   cout << sumOfSquaresExist(3);
-   // cout << "Hello";
+   // ---------------------------367. Valid Perfect Square------------------------------------
+   cout << validPerfectSquare(143);
+   cout << validPerfectSquare(399);
+   cout << validPerfectSquare(23);
+   cout << validPerfectSquare(170);
    return 0;
 }
